@@ -17,7 +17,6 @@ export default function Menu() {
         <Image
           width={20}
           height={20}
-          objectFit="cover"
           src={'/close.png'}
           alt="menu"
           onClick={() => setIsOpen(false)}
@@ -27,7 +26,6 @@ export default function Menu() {
         <Image
           width={20}
           height={20}
-          objectFit="cover"
           src={'/open.png'}
           alt="menu"
           onClick={() => setIsOpen(true)}

@@ -20,7 +20,7 @@ export type Menu = {
 };
 
 export type Product = {
-  id: number;
+  id: string;
   title: string;
   desc?: string;
   img?: string;
@@ -33,3 +33,28 @@ export interface PriceProp {
   id: number;
   options?: { title: string; additionalPrice: number }[];
 }
+
+export interface Order {
+  id: string;
+  createdAt: string;
+  price: number;
+  products: any;
+  status: string;
+  intent_id?: string;
+  user: any;
+  userEmail: string;
+}
+
+export interface CartItem {
+  id: string;
+  title: string;
+  img?: string;
+  price: number;
+  optionTitle?: string;
+  quantity: number;
+}
+
+export type ActionTypes = {
+  addToCart: (item: CartItem) => void;
+  removeFromCart: (item: CartItem) => void;
+};

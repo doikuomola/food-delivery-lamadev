@@ -3,10 +3,9 @@ import React from 'react';
 import Menu from './Menu';
 import CartIcon from './CartIcon';
 import Image from 'next/image';
+import UserLinks from './UserLinks';
 
 export default function Navbar() {
-  const user = {};
-
   return (
     <nav className="h-12 md:h-16 text-red-500 p-4 lg:px-20 xl:px-40 flex items-center justify-between border-b-2 border-red-500 uppercase">
       {/* left links */}
@@ -26,22 +25,12 @@ export default function Navbar() {
         <Menu />
       </div>
       {/* right links */}
-      <div className="hidden md:flex gap-4 flex-1 justify-end">
+      <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
         <div className="flex items-center gap-4 bg-orange-300 rounded-md px-1 cursor-pointer md:absolute lg:static top-3 right-2">
-          <Image
-            width={20}
-            height={20}
-            objectFit="cover"
-            src={'/phone.png'}
-            alt="phone"
-          />
+          <Image width={20} height={20} src={'/phone.png'} alt="phone" />
           <span>123 456 78</span>
         </div>
-        {!user ? (
-          <Link href="/login">Login</Link>
-        ) : (
-          <Link href="/orders">Orders</Link>
-        )}
+        <UserLinks />
         <CartIcon />
       </div>
     </nav>

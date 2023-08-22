@@ -1,6 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Navbar, Footer, Notification } from '@/components';
+import { Navbar, Footer, Notification, AuthProvider } from '@/components';
+import QueryProvider from '@/components/QueryProvider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,10 +18,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Notification />
-        <Navbar />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <QueryProvider>
+            <Notification />
+            <Navbar />
+            {children}
+            <Footer />
+            <ToastContainer
+              position="bottom-right"
+              theme="dark"
+              autoClose={3000}
+            />
+          </QueryProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,11 +1,22 @@
-import { menu } from '@/constants';
 import { Menu } from '@/typings';
 import Link from 'next/link';
 
-export default function Page() {
+async function getCategories() {
+  const response = await fetch('http:localhost:3000/api/categories', {
+    method: 'GET',
+    cache: 'no-store',
+  });
+
+  if (!response.ok) throw new Error('get categories failed');
+
+  return response.json();
+}
+
+export default async function Page() {
+  const menu = (await getCategories()) as Menu[];
   return (
     <main className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-7rem)] flex flex-col md:flex-row items-center">
-      {menu.map((category: Menu) => (
+      {menu.map((category) => (
         <Link
           style={{ backgroundImage: `url(${category.img})` }}
           href={`/menu/${category.slug}`}

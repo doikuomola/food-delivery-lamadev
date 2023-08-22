@@ -17,7 +17,6 @@ export default function Slider() {
 
   return (
     <section className="flex flex-col lg:flex-row h-[calc(100vh-6rem)] md:h-[calc(100vh-7rem)]">
-      {/* text */}
       <div className="h-1/2 lg:h-full flex items-center justify-center flex-col gap-8 text-red-500 font-bold lg:w-1/2 bg-fuchsia-50">
         <h1 className="text-5xl md:text-6xl xl:text-7xl  uppercase p-4 md:p-10 text-center">
           {slideData[currentSlide].title}
